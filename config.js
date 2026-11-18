@@ -4,7 +4,7 @@
   const CONFIG = Object.freeze({
     APP_NAME: 'FolioSpace',
     // Set to the /exec Web App deployment URL (not /dev).
-    GAS_WEB_APP_URL: 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_EXEC_URL_HERE',
+    GAS_WEB_APP_URL: 'https://script.google.com/macros/s/AKfycbwo9fb7HOmV2G8pIfve83qHC1-tKuqHTQUC-_LxngA43NK72HKXpKb16WFajpsx4Xjg/exec',
     ENV: 'production',
     REQUEST_TIMEOUT_MS: 60000,
     CACHE_VERSION: '1.0',
