@@ -6,7 +6,7 @@
     // Set to the /exec Web App deployment URL (not /dev).
     GAS_WEB_APP_URL: 'https://script.google.com/macros/s/AKfycbwo9fb7HOmV2G8pIfve83qHC1-tKuqHTQUC-_LxngA43NK72HKXpKb16WFajpsx4Xjg/exec',
     ENV: 'production',
-    REQUEST_TIMEOUT_MS: 60000,
+    REQUEST_TIMEOUT_MS: 45000,
     CACHE_VERSION: '1.0',
     SESSION_KEY: 'foliospace.session.v1',
     NON_SENSITIVE_CACHE_TTL_MS: 90 * 1000,
