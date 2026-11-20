@@ -1,72 +1,708 @@
-<!doctype html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8fffb"><title>Verifikasi Email · FolioSpace</title><style>
-/*! tailwindcss v4.1.10 | MIT License | https://tailwindcss.com */
-:root, :host {
-  --spacing: 0.25rem;
-  --color-white: #ffffff;
-  --radius-xl: 0.75rem;
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#17865c">
+<meta name="description" content="Verifikasi alamat email FolioSpace untuk mengaktifkan ruang portofolio profesional Anda.">
+<title>Verifikasi Email · FolioSpace</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2316865d'/%3E%3Cpath d='M19 16h30v8H27v11h18v8H27v12h-8z' fill='white'/%3E%3Cpath d='M45 13l2 5 5 2-5 2-2 5-2-5-5-2 5-2z' fill='%23b9f6d1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* FolioSpace Auth Experience v2 — inline stylesheet; no build runtime required. */
+:root {
+  color-scheme: light;
+  --ink:#173629; --ink-strong:#102b20; --ink-subtle:#667a70;
+  --emerald:#17865c; --emerald-dark:#106947; --green:#42b883;
+  --mint:#c8f1d8; --pale:#f3fbf6; --border:#dfece4;
+  --white:#ffffff; --danger:#b64554; --warning:#af7730;
+  --shadow:0 28px 85px rgba(17,80,51,.10),0 7px 20px rgba(18,77,47,.055);
+  --font:'Plus Jakarta Sans',Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
-.mx-auto {
-  margin-inline: auto;
+*,*::before,*::after { box-sizing:border-box; }
+html { min-width:320px; min-height:100%; scroll-behavior:smooth; }
+body { margin:0; min-width:320px; min-height:100dvh; color:var(--ink);
+  font-family:var(--font); font-size:14px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  background:radial-gradient(ellipse at 4% 10%,#def6e8,transparent 35%),radial-gradient(ellipse at 95% 90%,#e2f8ec,transparent 42%),#f6fbf8;
 }
-.flex {
-  display: flex;
+button,input { font:inherit; }
+button { cursor:pointer; -webkit-tap-highlight-color:transparent; }
+button:disabled { cursor:wait; opacity:.72; }
+a { color:inherit; text-decoration:none; }
+:focus-visible { outline:3px solid #53bb8a99; outline-offset:3px; }
+[hidden] { display:none!important; }
+svg { display:block; }
+button,input { min-width:0; }
+.icon { width:20px; height:20px; stroke:currentColor; stroke-width:1.9; fill:none; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+.icon-lg { width:25px; height:25px; }
+.icon-sm { width:16px; height:16px; }
+.app-shell { width:min(1600px,calc(100% - 36px)); height:calc(100dvh - 36px); min-height:650px; margin:18px auto;
+  display:grid; grid-template-columns:minmax(0,.98fr) minmax(0,1.02fr); overflow:hidden;
+  background:#fff; border:1px solid rgba(255,255,255,.95); border-radius:32px;
+  box-shadow:var(--shadow); isolation:isolate; }
+.visual { position:relative; display:flex; flex-direction:column; justify-content:space-between;
+  min-width:0; min-height:0; overflow:hidden; padding:clamp(30px,4.2vw,67px);
+  background:linear-gradient(146deg,#12865f 0%,#35ad7d 37%,#58c995 71%,#91dfb2 100%); color:white; }
+.visual::before { content:""; position:absolute; width:105%; aspect-ratio:1; border:1px solid #ffffff3b;
+  border-radius:50%; left:37%; bottom:-52%; box-shadow:0 0 0 105px #ffffff12,0 0 0 210px #ffffff09; pointer-events:none; }
+.visual::after { content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(circle at 98% 13%,#c8fbd082,transparent 34%),
+    radial-gradient(circle at 7% 89%,#0965402b,transparent 48%),
+    linear-gradient(125deg,#0a775128,transparent 48%); }
+.visual-content,.visual-top,.visual-footer { position:relative; z-index:2; }
+.visual-top { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.brand { display:inline-flex; align-items:center; gap:12px; min-width:0; font-weight:800; font-size:clamp(20px,2vw,25px); letter-spacing:-.065em; line-height:1.2; white-space:nowrap; }
+.brand-mark { position:relative; display:grid; place-items:center; width:47px; height:47px; border-radius:15px;
+  background:linear-gradient(145deg,#ffffffef,#f4fff6ea); color:#16865d;
+  box-shadow:0 11px 28px #085c3e22; border:1px solid #ffffffac; flex-shrink:0; }
+.brand-mark svg { width:27px; height:27px; }
+.brand-dot { color:#bffad3; }
+.visual-overline { display:inline-flex; align-items:center; gap:10px; margin:0 0 23px;
+  text-transform:uppercase; letter-spacing:.22em; font-size:10px; font-weight:800; color:#edfff3; }
+.visual-overline::before { content:""; width:26px; height:1px; background:#e3ffed; }
+.visual-content { width:min(100%,620px); margin:auto 0; padding:50px 0 28px; }
+.visual h2 { max-width:620px; font-size:clamp(39px,4.45vw,74px); line-height:1.065;
+  letter-spacing:-.078em; font-weight:800; margin:0 0 24px; text-wrap:balance; }
+.visual h2 span { color:#d9ffe6; }
+.visual-description { max-width:465px; font-size:clamp(13px,1.15vw,16px); color:#ecfff4;
+  margin:0; line-height:1.8; font-weight:470; }
+.orbit-star { width:38px; height:38px; display:grid; place-items:center; border:1px solid #ffffff5c;
+  border-radius:13px; color:#fff; background:#ffffff2b; backdrop-filter:blur(7px); }
+.orbit-star svg { width:20px; height:20px; }
+.mini-preview { width:min(100%,486px); margin-top:clamp(26px,4vh,44px); position:relative;
+  border-radius:24px; padding:15px; border:1px solid #ffffff7a;
+  background:linear-gradient(145deg,#ffffff45,#ffffff20); box-shadow:0 20px 42px #075f3c19;
+  backdrop-filter:blur(18px); }
+.mini-preview::after { content:"✦"; position:absolute; top:-22px; right:-19px;
+  display:grid; place-items:center; height:47px; width:47px; background:#f7fff9;
+  color:#16865d; border:1px solid #e2ffe9; border-radius:16px;
+  font-size:24px; box-shadow:0 12px 30px #075f3b2b; line-height:1; }
+.preview-header { display:flex; align-items:center; gap:7px; margin-bottom:13px; padding:3px 4px 0; }
+.preview-header i { display:block; width:7px; height:7px; border-radius:50%; background:#f6fff9c5; }
+.preview-header span { margin-left:auto; font-size:10px; font-weight:700; color:#f5fff8da; letter-spacing:.02em; }
+.preview-body { display:flex; align-items:center; gap:15px; padding:15px 17px;
+  border:1px solid #e6f5e9; background:#ffffffed; border-radius:16px; color:var(--ink); }
+.preview-logo { width:50px; height:50px; display:grid; place-items:center;
+  background:linear-gradient(135deg,#d8f8e5,#a7e7c2); color:#15734f; border-radius:14px; }
+.preview-body strong { display:block; font-size:13px; letter-spacing:-.035em; }
+.preview-body p { margin:4px 0 0; color:#789185; font-size:11px; }
+.preview-bars { display:flex; gap:6px; padding:11px 3px 0; }
+.preview-bars span { height:6px; border-radius:100px; background:#e7fff0bd; }
+.preview-bars span:nth-child(1) { flex:5; }.preview-bars span:nth-child(2) { flex:3; opacity:.65; }.preview-bars span:nth-child(3) { flex:2; opacity:.4; }
+.visual-footer { display:flex; justify-content:space-between; align-items:center; gap:16px; color:#eefff5b8; font-size:11px; font-weight:600; }
+.footer-tag { display:inline-flex; align-items:center; gap:7px; padding:7px 12px; border-radius:30px;
+  background:#ffffff1e; border:1px solid #ffffff49; color:white; }
+.footer-tag svg { width:14px; height:14px; }
+.form-pane { min-width:0; min-height:0; display:flex; flex-direction:column; overflow-y:auto; overscroll-behavior:contain;
+  background:radial-gradient(circle at 91% 9%,#e8f9ee87,transparent 32%),linear-gradient(135deg,#fff,#fcfffd 60%,#f8fcf9); }
+.pane-top { display:flex; justify-content:flex-end; align-items:center; gap:10px; padding:clamp(25px,3vw,45px) clamp(26px,5vw,73px) 0; }
+.secure-pill { display:inline-flex; gap:8px; align-items:center; padding:8px 13px; border-radius:999px;
+  font-size:10px; font-weight:800; letter-spacing:.025em; color:#47816a;
+  border:1px solid #dfeee5; background:#ffffffb8; white-space:nowrap; }
+.secure-pill svg { height:15px; width:15px; }
+.form-stage { width:100%; min-height:min-content; flex:1; display:flex; flex-direction:column;
+  justify-content:center; align-items:center; padding:32px clamp(26px,5.9vw,94px) 36px; }
+.form-inner { width:min(100%,480px); min-width:0; }
+.eyebrow { display:inline-flex; align-items:center; gap:9px; font-size:10px; line-height:1.4;
+  color:#188560; text-transform:uppercase; font-weight:800; letter-spacing:.20em; }
+.eyebrow .sparkle { display:inline-grid; place-items:center; width:23px; height:23px; border-radius:8px;
+  background:#e7f7ed; color:#1b9a69; font-size:14px; line-height:1; }
+h1 { font-size:clamp(33px,3vw,47px); color:#183128; font-weight:800; letter-spacing:-.075em;
+  line-height:1.16; margin:15px 0 11px; text-wrap:balance; }
+.headline-sub { color:#778b80; font-size:13px; line-height:1.75; margin:0 0 25px; max-width:420px; }
+.tabs { display:grid; grid-template-columns:1fr 1fr 1.12fr; gap:4px;
+  padding:5px; border-radius:16px; border:1px solid #e4eee8; background:#f5f9f6;
+  margin-bottom:23px; box-shadow:inset 0 1px 2px #1b503009; }
+.tab { position:relative; border:0; border-radius:12px; padding:12px 7px; min-height:43px;
+  background:transparent; color:#788b7f; font-size:12px; font-weight:800; transition:all .2s ease; white-space:nowrap; }
+.tab:hover:not(.active) { color:#236c4c; background:#ffffff9c; }
+.tab.active { background:white; color:#17865d; box-shadow:0 5px 16px #17472b11,0 1px 3px #17472b0d; }
+.field { margin-bottom:15px; }
+.label-row { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:8px; }
+.field label { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:800; color:#213d2e; }
+.required { color:#259869; font-size:12px; line-height:1; align-self:center; }
+.field-shell { position:relative; display:flex; align-items:center; min-width:0; }
+.leading-icon { position:absolute; left:16px; top:50%; transform:translateY(-50%); color:#8ba99a;
+  pointer-events:none; z-index:1; display:flex; align-items:center; justify-content:center; }
+.field-shell input { display:block; width:100%; min-height:54px; padding:13px 52px 13px 46px;
+  border:1px solid #dce9df; outline:0; background:#fff; border-radius:15px;
+  font-size:13px; font-weight:550; letter-spacing:0; color:#19392b;
+  box-shadow:0 3px 10px #235e3710, inset 0 1px #ffffff;
+  transition:border-color .2s,box-shadow .2s,transform .2s; }
+.field-shell input::placeholder { color:#a5b3a9; font-weight:480; }
+.field-shell input:hover { border-color:#b9dec8; }
+.field-shell input:focus { border-color:#51ba83; box-shadow:0 0 0 4px #42b8831d,0 8px 18px #2866440e; }
+.field-shell input[aria-invalid="true"] { border-color:#d88490; box-shadow:0 0 0 3px #e7a0ac1c; }
+.field-shell:not(:has(.password-toggle)) input { padding-right:16px; }
+.password-toggle { position:absolute; right:7px; top:50%; transform:translateY(-50%);
+  height:39px; width:39px; display:grid; place-items:center; background:#f2f8f4; border:1px solid transparent;
+  border-radius:11px; color:#678875; transition:background .2s,color .2s,transform .2s; }
+.password-toggle:hover { background:#e5f6eb; color:#138158; }
+.password-toggle:active { transform:translateY(-50%) scale(.95); }
+.password-toggle svg { width:19px; height:19px; }
+.eye-off { display:none; }
+.password-toggle[aria-pressed="true"] .eye-off { display:block; }
+.password-toggle[aria-pressed="true"] .eye-on { display:none; }
+.field-error { display:block; min-height:0; margin:6px 2px 0; color:var(--danger); font-size:11px; font-weight:650; }
+.field-error:empty { display:none; }
+.field-description { color:#84968b; margin:7px 1px 0; font-size:10.5px; }
+.strength-track { display:flex; gap:5px; margin-top:11px; }
+.strength-track span { height:5px; background:#e7eee9; border-radius:20px; flex:1; transition:background .22s ease; }
+.strength-track[data-level="1"] span:nth-child(-n+1) { background:#dc9b63; }
+.strength-track[data-level="2"] span:nth-child(-n+2) { background:#e2b758; }
+.strength-track[data-level="3"] span:nth-child(-n+3) { background:#71ba81; }
+.strength-track[data-level="4"] span:nth-child(-n+4) { background:#1cad75; }
+.strength-note { display:flex; justify-content:space-between; gap:10px; margin-top:6px; color:#859689; font-size:10px; }
+.strength-note strong { color:#327c58; font-size:10px; }
+.form-foot-row { display:flex; gap:12px; justify-content:space-between; align-items:center;
+  color:#81958a; font-size:11px; margin:8px 0 22px; }
+.inline-link { border:0; background:none; padding:0; color:#16865d; font-weight:800; font-size:11px; }
+.inline-link:hover { text-decoration:underline; }
+.submit { position:relative; display:flex; align-items:center; justify-content:center; gap:11px; width:100%; min-height:54px;
+  padding:13px 21px; border:1px solid #19875d; border-radius:15px; color:white; font-size:13px;
+  font-weight:800; letter-spacing:-.01em; background:linear-gradient(108deg,#13865a,#2bb276 70%,#44c58e);
+  box-shadow:0 13px 29px #1c9b6234,inset 0 1px #ffffff38;
+  transition:filter .18s,transform .18s,box-shadow .18s; overflow:hidden; }
+.submit::after { content:""; pointer-events:none; position:absolute; inset:-40% auto -40% -38%; width:27%;
+  transform:skewX(-24deg); background:linear-gradient(90deg,transparent,#ffffff20,transparent);
+  transition:left .6s; }
+.submit:hover:not(:disabled) { filter:brightness(1.045); transform:translateY(-1px); box-shadow:0 17px 35px #1c9b6242; }
+.submit:hover:not(:disabled)::after { left:118%; }
+.submit:active:not(:disabled) { transform:translateY(0); }
+.submit .btn-spinner { width:18px; height:18px; border:2px solid #ffffff56; border-top-color:#fff;
+  border-radius:50%; animation:spin .7s linear infinite; }
+.submit .btn-arrow { width:17px; height:17px; }
+.submit[data-pending="true"] .btn-arrow { display:none; }
+.submit:not([data-pending="true"]) .btn-spinner { display:none; }
+.action-secondary { display:flex; align-items:center; justify-content:center; gap:9px; width:100%;
+  min-height:48px; padding:12px; border-radius:14px; border:1px solid #dce9df; background:#fff;
+  color:#50735c; font-size:12px; font-weight:780; transition:all .2s; }
+.action-secondary:hover { border-color:#94c9ac; background:#f4fbf6; }
+.form-note { display:flex; justify-content:center; align-items:center; gap:8px; margin:20px 0 0;
+  font-size:11px; color:#8a9b91; text-align:center; }
+.form-note svg { width:15px; height:15px; color:#49a67a; }
+.account-foot { flex-shrink:0; text-align:center; padding:0 24px 22px; color:#9bad9f; font-size:10px; line-height:1.7; }
+.feedback { display:flex; align-items:flex-start; gap:10px; padding:12px 14px; margin:0 0 17px;
+  border:1px solid #d5efdf; background:#f1fcf5; border-radius:14px; color:#297754;
+  font-size:11.5px; font-weight:650; box-shadow:0 6px 20px #12764709; }
+.feedback[data-kind="error"] { border-color:#f2d7dd; background:#fff6f7; color:#b64554; }
+.feedback[data-kind="warning"] { border-color:#f1e4c8; background:#fffbf0; color:#a77733; }
+.feedback .feedback-icon { width:20px; height:20px; flex-shrink:0; display:grid; place-items:center;
+  border-radius:7px; background:#d9f4e5; font-size:12px; }
+.feedback[data-kind="error"] .feedback-icon { background:#fde6ea; }
+.feedback[data-kind="warning"] .feedback-icon { background:#fff0ce; }
+.feedback-main { flex:1; min-width:0; }
+.feedback-main a,.feedback-main button { border:0; background:none; padding:0; color:inherit; font-weight:800; text-decoration:underline; cursor:pointer; }
+.result-card { padding:27px 22px 24px; text-align:center; border-radius:22px;
+  border:1px solid #ddecdf; box-shadow:0 12px 38px #1f7c4812;
+  background:radial-gradient(circle at 50% -20%,#d8f9e6,transparent 55%),#fff; animation:rise .3s ease both; }
+.result-illustration { display:grid; place-items:center; width:78px; height:78px; margin:0 auto 17px;
+  border-radius:25px; border:1px solid #ccebd8; color:#16865d;
+  box-shadow:0 0 0 9px #eefaef,0 15px 25px #20845314;
+  background:linear-gradient(145deg,#e9f9ef,#bfead1); }
+.result-illustration svg { width:35px; height:35px; }
+.result-card h2 { font-size:22px; line-height:1.25; letter-spacing:-.05em; margin:0 0 9px; }
+.result-card p { max-width:360px; font-size:12px; line-height:1.85; color:#6e8276; margin:0 auto 19px; }
+.result-email { display:block; max-width:100%; overflow-wrap:anywhere; width:fit-content; margin:0 auto 21px;
+  font-weight:800; color:#16865d; background:#f0faf4; border:1px solid #dbefe3;
+  border-radius:11px; padding:8px 12px; font-size:11.5px; }
+.result-buttons { display:grid; gap:9px; }
+.result-hint { font-size:11px; color:#819689; margin:15px 0 0; }
+.toast-stack { position:fixed; z-index:999; right:24px; top:24px; display:flex; flex-direction:column;
+  gap:12px; pointer-events:none; width:min(390px,calc(100vw - 32px)); }
+.toast { position:relative; display:flex; align-items:flex-start; gap:12px; pointer-events:auto;
+  padding:16px 17px 19px; border:1px solid #e2efe6; border-radius:18px;
+  background:linear-gradient(135deg,#fff,#f9fefb); color:#183629;
+  box-shadow:0 20px 60px #1a5e3b2b,0 2px 8px #1a5e3b0c; overflow:hidden;
+  animation:toastIn .27s cubic-bezier(.2,.8,.2,1) both; }
+.toast[data-kind="error"] { border-color:#f0d9dd; background:linear-gradient(135deg,#fff,#fff8f8); }
+.toast[data-kind="warning"] { border-color:#f1e1c6; background:linear-gradient(135deg,#fff,#fffaf1); }
+.toast-icon { flex-shrink:0; width:36px; height:36px; display:grid; place-items:center;
+  color:#18885d; background:#e6f7ec; border-radius:12px; }
+.toast[data-kind="error"] .toast-icon { color:#b64554; background:#fbe8eb; }
+.toast[data-kind="warning"] .toast-icon { color:#a77733; background:#fff1d8; }
+.toast-icon svg { width:19px; height:19px; }
+.toast-copy { min-width:0; flex:1; padding:0 0 0; }
+.toast-copy strong { display:block; font-size:12px; font-weight:800; letter-spacing:-.02em; }
+.toast-copy p { margin:3px 0 0; font-size:11px; line-height:1.6; color:#708477; overflow-wrap:anywhere; }
+.toast-dismiss { align-self:flex-start; margin:-4px -6px 0 0; border:0; background:transparent;
+  border-radius:8px; color:#92a399; padding:6px; }
+.toast-dismiss:hover { background:#eef6f0; color:#315942; }
+.toast-dismiss svg { width:16px; height:16px; }
+.toast::after { content:""; height:3px; position:absolute; left:0; right:0; bottom:0;
+  background:linear-gradient(90deg,#139562,#80dbae); transform-origin:left;
+  animation:toastProgress 5.5s linear both; }
+.toast[data-kind="error"]::after { background:linear-gradient(90deg,#b64554,#e2a2af); }
+.toast[data-kind="warning"]::after { background:linear-gradient(90deg,#bb873b,#eed4a0); }
+.toast:hover::after { animation-play-state:paused; }
+.verify-symbol { position:relative; display:grid; place-items:center; width:75px; height:75px; border-radius:23px;
+  background:linear-gradient(140deg,#f0fbf5,#d5f1df); color:#16865d; border:1px solid #d8ebdf;
+  box-shadow:0 0 0 9px #edf9f1,0 15px 29px #24764c10; margin:3px 0 26px; }
+.verify-symbol svg { height:34px; width:34px; }
+.verify-symbol[data-kind="error"] { color:#b64554; background:linear-gradient(135deg,#fff6f6,#f8dfe4); border-color:#f5dadd;
+  box-shadow:0 0 0 9px #fff5f6,0 15px 29px #922b3a0e; }
+.verify-symbol[data-kind="loading"] svg { animation:pulse 1.35s ease-in-out infinite; }
+.verify-symbol[data-kind="loading"]::after { content:""; position:absolute; inset:-7px; border:2px solid transparent; border-top-color:#55ba88; border-right-color:#c6e7d3; border-radius:29px; animation:spin 1.1s linear infinite; }
+.verify-symbol[data-kind="success"] { color:#16865d; background:linear-gradient(135deg,#e8faee,#b6e9cb); }
+.verify-card { padding:20px 20px 17px; border:1px solid #e2ede6; background:#fff;
+  border-radius:19px; box-shadow:0 10px 24px #184c2e0b; }
+.verify-card h3 { margin:0 0 6px; font-size:13px; font-weight:800; letter-spacing:-.03em; }
+.verify-card p { margin:0 0 14px; color:#8a9b90; font-size:11.5px; line-height:1.65; }
+.verify-card .field { margin-bottom:12px; }
+.verify-extra { display:flex; align-items:center; gap:10px; margin:22px 0; color:#a1aea5; font-size:10px; }
+.verify-extra::before,.verify-extra::after { content:""; height:1px; background:#e5eee8; flex:1; }
+.manual-toggle { border:0; background:none; color:#16865d; font-size:11px; font-weight:800;
+  padding:5px; display:flex; align-items:center; gap:6px; margin:14px auto 0; }
+.manual-toggle svg { width:15px; height:15px; }
+.verify-subtext { margin:0 0 18px; font-size:12px; color:#7c9182; line-height:1.8; }
+.verify-subtext strong { color:#557360; }
+@keyframes spin { to { transform:rotate(360deg); } }
+@keyframes rise { from { opacity:0; transform:translateY(9px); } to { opacity:1; transform:translateY(0); } }
+@keyframes toastIn { from {opacity:0;transform:translateY(-14px) scale(.98);} to {opacity:1;transform:translateY(0) scale(1);} }
+@keyframes toastProgress { to { transform:scaleX(0); } }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.55;transform:scale(.93);} }
+@media(min-height:850px) and (min-width:901px) {
+  .visual-content { padding-top:35px;padding-bottom:35px; }
+  .form-stage { padding-top:26px;padding-bottom:26px; }
 }
-.grid {
-  display: grid;
+@media(max-height:780px) and (min-width:901px) {
+  .visual { padding:30px clamp(28px,4vw,64px); }
+  .visual-content { padding:23px 0 10px; }
+  .visual h2 { font-size:clamp(35px,3.45vw,55px); margin-bottom:15px; }
+  .mini-preview { margin-top:21px; }
+  .pane-top { padding-top:21px; }
+  .form-stage { padding-top:20px;padding-bottom:20px; }
+  .field { margin-bottom:11px; }
+  .headline-sub { margin-bottom:18px; }
+  .tabs { margin-bottom:16px; }
+  .form-foot-row { margin-bottom:14px; }
 }
-.min-h-screen {
-  min-height: 100vh;
+@media(max-width:1050px) and (min-width:841px) {
+  .visual { padding:34px; }
+  .visual h2 { font-size:clamp(38px,4vw,53px); }
+  .form-stage { padding-left:32px;padding-right:32px; }
+  .pane-top { padding-right:32px; }
 }
-.w-full {
-  width: 100%;
+@media(max-width:840px) {
+  body { padding:0; background:#fff; }
+  .app-shell { width:100%; height:auto; min-height:100dvh; margin:0; display:flex; flex-direction:column;
+    border:0; border-radius:0; overflow:visible; box-shadow:none; }
+  .visual { flex-shrink:0; min-height:234px; padding:24px clamp(22px,5vw,42px); gap:20px; }
+  .visual-content { padding:0; margin:0; }
+  .visual-overline { font-size:9px; margin-bottom:9px; }
+  .visual h2 { font-size:clamp(24px,4.5vw,33px); line-height:1.14; max-width:480px; margin:0 0 10px; }
+  .visual-description { font-size:11px; line-height:1.65; max-width:460px; }
+  .mini-preview,.visual-footer,.orbit-star { display:none; }
+  .visual::before { width:60%;left:75%;bottom:-220%; }
+  .brand { font-size:21px; }
+  .brand-mark { width:39px; height:39px; border-radius:13px; }
+  .brand-mark svg { width:23px; height:23px; }
+  .form-pane { flex:1; overflow:visible; }
+  .pane-top { display:none; }
+  .form-stage { flex:1; padding:29px 24px 18px; justify-content:flex-start; }
+  .form-inner { width:min(100%,470px); }
+  h1 { font-size:clamp(30px,5vw,38px); }
+  .account-foot { padding:12px 22px 28px; }
+  .toast-stack { right:16px; top:16px; }
 }
-.grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+@media(max-width:480px) {
+  .visual { min-height:206px; padding:22px 22px 21px; }
+  .visual h2 { font-size:27px; }
+  .visual-description { font-size:10.5px; }
+  .form-stage { padding:24px 20px 12px; }
+  h1 { font-size:31px; margin-top:12px; }
+  .headline-sub { margin-bottom:20px; }
+  .tabs { margin-bottom:20px; }
+  .tab { font-size:11px; padding-inline:3px; }
+  .field-shell input { min-height:52px; }
+  .toast-stack { top:auto; bottom:12px; right:12px; left:12px; width:auto; }
+  .toast { padding:13px 15px 16px; }
+  .result-card { padding:26px 15px 20px; }
 }
-.items-center {
-  align-items: center;
+@media(max-width:360px) {
+  .visual h2 { font-size:24px; }
+  .visual { min-height:198px; }
+  .form-stage { padding:20px 15px; }
+  h1 { font-size:29px; }
+  .tabs { grid-template-columns:1fr 1fr 1.23fr; }
+  .tab { font-size:10.5px; }
 }
-.justify-between {
-  justify-content: space-between;
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; }
 }
-.gap-3 {
-  gap: calc(var(--spacing) * 3);
+
+.action-secondary .btn-spinner{width:15px;height:15px;border:2px solid #c8e9d5;border-top-color:#16865d;border-radius:50%;animation:spin .7s linear infinite;}
+
+
+/* FolioSpace v3 — full-bleed editorial brand panel. No enclosing card. */
+body { background:#f8fcf9; }
+.app-shell {
+  width:100%; max-width:none; height:100dvh; min-height:0; margin:0;
+  grid-template-columns:minmax(0,51.5fr) minmax(0,48.5fr);
+  border:0; border-radius:0; box-shadow:none; overflow:hidden;
 }
-.gap-4 {
-  gap: calc(var(--spacing) * 4);
+.visual {
+  padding:clamp(32px,4.5vw,78px) clamp(34px,5.25vw,94px) clamp(28px,3.1vw,56px);
+  gap:24px; overflow:hidden; isolation:isolate;
+  background:linear-gradient(132deg,#08734f 0%,#159768 30%,#3dbd86 68%,#86ddac 100%);
 }
-.rounded-xl {
-  border-radius: var(--radius-xl);
+.visual::before {
+  width:min(1040px,118vw); height:min(1040px,118vw); aspect-ratio:initial;
+  left:35%; top:-53%; bottom:auto; border-radius:50%;
+  border:1px solid rgba(245,255,247,.25);
+  box-shadow:0 0 0 105px #f1fff312,0 0 0 214px #ffffff08;
 }
-.bg-white {
-  background-color: var(--color-white);
+.visual::after {
+  background:radial-gradient(circle at 95% 85%,#b1ffcd59,transparent 43%),
+    radial-gradient(circle at 10% 95%,#004b392b,transparent 40%),
+    linear-gradient(150deg,#0d5e3918,transparent 50%);
 }
-.p-4 {
-  padding: calc(var(--spacing) * 4);
+.visual-top { justify-content:flex-start; }
+.brand { font-size:clamp(23px,2.25vw,30px); gap:14px; letter-spacing:-.065em; }
+.brand-mark { width:55px; height:55px; border-radius:17px; box-shadow:0 14px 34px #064d3426; }
+.brand-mark svg { width:29px; height:29px; }
+.brand-stack { display:flex; flex-direction:column; align-items:flex-start; gap:3px; min-width:0; }
+.brand-title { line-height:1.04; white-space:nowrap; }
+.brand-stack small { color:#e2ffebd0; font-weight:750; font-size:9px; letter-spacing:.22em; line-height:1.65; white-space:normal; }
+.orbit-star { margin-left:auto; width:41px; height:41px; }
+.visual-content { margin:auto 0; padding:16px 0 10px; width:min(100%,660px); }
+.visual-overline {
+  display:inline-flex; align-items:center; gap:10px; width:fit-content;
+  margin-bottom:35px; padding:9px 14px 9px 11px; border:1px solid #ffffff82;
+  border-radius:999px; background:#ffffff21; backdrop-filter:blur(10px);
+  font-size:9.5px; letter-spacing:.11em; color:#fff; line-height:1.4;
 }
-.text-center {
-  text-align: center;
+.visual-overline::before { content:""; width:8px; height:8px; border-radius:50%; flex-shrink:0;
+  background:#e8fff1; border:2px solid #ffffff9e; box-shadow:0 0 0 4px #ffffff27; }
+.visual h2 { max-width:660px; margin:0 0 25px; font-size:clamp(42px,5.15vw,82px);
+  line-height:1.17; letter-spacing:-.055em; font-weight:800; text-wrap:balance; }
+.visual h2 span { color:#e1ffe9; }
+.visual-description { max-width:565px; font-size:clamp(14px,1.15vw,17px); line-height:1.85;
+  color:#f0fff7; font-weight:550; }
+.visual-perks { display:flex; align-items:center; flex-wrap:wrap; gap:9px; margin-top:36px; }
+.visual-perk { display:inline-flex; align-items:center; gap:7px; white-space:nowrap; padding:10px 12px;
+  border-radius:12px; border:1px solid #ffffff77; background:linear-gradient(145deg,#ffffff29,#ffffff10);
+  color:#fff; font-size:10px; font-weight:760; box-shadow:inset 0 1px 0 #ffffff27;
+  backdrop-filter:blur(6px); }
+.visual-perk .icon { width:14px; height:14px; }
+.visual-bottom { position:relative; z-index:2; display:flex; align-items:flex-end; gap:18px; width:100%; }
+.visual-quote { display:flex; align-items:center; gap:14px; min-width:0; max-width:490px;
+  padding:18px 19px; border-radius:20px; background:linear-gradient(120deg,#ffffff2a,#ffffff16);
+  border:1px solid #ffffff8d; backdrop-filter:blur(12px); box-shadow:0 20px 40px #00513716; }
+.visual-quote-mark { display:grid; place-items:center; flex-shrink:0; width:46px; height:46px;
+  border:1px solid #ffffff86; border-radius:14px; background:#ffffff25; }
+.visual-quote-mark svg { width:22px; height:22px; }
+.visual-quote-copy { min-width:0; }
+.visual-quote strong { display:block; font-size:13px; font-weight:800; letter-spacing:-.035em; line-height:1.5; }
+.visual-quote p { margin:4px 0 0; font-size:10.5px; color:#f6fffbd4; line-height:1.6; }
+.visual-signature { color:#eefff6e3; font-weight:800; font-size:9px; letter-spacing:.11em; line-height:1.6;
+  white-space:nowrap; margin-bottom:4px; }
+.visual-footer { font-size:10px; color:#ecfff3b9; }
+.visual-footer .footer-tag { background:none; border:0; padding:0; font-size:9px;
+  color:#f3fff5b9; font-weight:780; letter-spacing:.065em; }
+.form-pane { background:radial-gradient(circle at 100% 100%,#e9fbef8f,transparent 35%),
+  linear-gradient(148deg,#fff 0%,#fff 58%,#f9fffb 100%); }
+@media(max-width:1200px) and (min-width:841px) {
+  .visual { padding-left:clamp(30px,4.7vw,62px); padding-right:clamp(30px,4.7vw,62px); }
+  .visual h2 { font-size:clamp(39px,5vw,64px); }
+  .visual-signature { display:none; }
+  .visual-perks { gap:7px; }
+  .visual-perk { font-size:9.5px; padding:9px; }
 }
-.md\:grid-cols-2 {
-  @media (width >= 48rem) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@media(max-height:760px) and (min-width:841px) {
+  .visual { padding-top:27px; padding-bottom:24px; gap:15px; overflow-y:auto; }
+  .brand-mark { width:46px; height:46px; border-radius:14px; }
+  .brand-mark svg { width:25px; height:25px; }
+  .brand { font-size:23px; }
+  .visual-content { padding:8px 0; }
+  .visual-overline { margin-bottom:20px; padding-block:7px; }
+  .visual h2 { font-size:clamp(39px,4.2vw,60px); margin-bottom:16px; }
+  .visual-description { font-size:13px; line-height:1.65; }
+  .visual-perks { margin-top:20px; }
+  .visual-quote { padding:12px 14px; }
+  .visual-quote-mark { width:38px; height:38px; }
+  .visual-quote p { font-size:9.5px; }
+}
+@media(max-width:840px) {
+  .app-shell { width:100%; min-height:100dvh; height:auto; margin:0; display:flex;
+    flex-direction:column; border:0; border-radius:0; box-shadow:none; overflow:visible; }
+  .visual { min-height:280px; padding:24px clamp(22px,5vw,44px) 27px; gap:18px; overflow:hidden; }
+  .visual::before { width:540px; height:540px; left:50%; top:-400px; bottom:auto; }
+  .visual-top { gap:10px; }
+  .brand { font-size:22px; gap:10px; }
+  .brand-mark { width:40px; height:40px; border-radius:12px; }
+  .brand-mark svg { width:24px; height:24px; }
+  .brand-stack small { font-size:7.5px; letter-spacing:.15em; }
+  .visual-content { padding:5px 0 0; margin:0; }
+  .visual-overline { padding:6px 10px; font-size:8px; letter-spacing:.065em; margin-bottom:14px; }
+  .visual-overline::before { width:7px; height:7px; }
+  .visual h2 { max-width:590px; font-size:clamp(29px,5vw,45px); margin-bottom:13px; line-height:1.2; }
+  .visual-description { font-size:11px; line-height:1.7; max-width:560px; }
+  .visual-perks { margin-top:17px; gap:6px; }
+  .visual-perk { font-size:9px; padding:7px 9px; border-radius:9px; }
+  .visual-quote,.visual-bottom,.visual-footer,.orbit-star { display:none; }
+  .form-pane { flex:1; overflow:visible; }
+}
+@media(max-width:480px) {
+  .visual { min-height:0; padding:22px 21px 23px; gap:20px; }
+  .visual h2 { font-size:clamp(29px,8.1vw,36px); letter-spacing:-.035em; line-height:1.23; }
+  .visual-description { font-size:10.7px; line-height:1.7; }
+  .visual-overline { margin-bottom:12px; }
+  .visual-perks { gap:6px; margin-top:14px; }
+  .visual-perk { font-size:8.5px; padding:6px 8px; }
+}
+@media(max-width:360px) {
+  .visual { padding-inline:17px; }
+  .brand { font-size:20px; }
+  .brand-stack small { letter-spacing:.09em; }
+  .visual h2 { font-size:27px; }
+  .visual-perk { font-size:8px; }
+}
+
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" focusable="false">
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><path d="M13 17h8m-4-4v8"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.2 12s3.6-6.5 9.8-6.5 9.8 6.5 9.8 6.5-3.6 6.5-9.8 6.5S2.2 12 2.2 12Z"/><circle cx="12" cy="12" r="2.6"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="m3 3 18 18M10.7 5.6a11 11 0 0 1 1.3-.1c6.2 0 9.8 6.5 9.8 6.5a15.6 15.6 0 0 1-3.1 3.5M6.1 6.9C3.7 8.7 2.2 12 2.2 12s3.6 6.5 9.8 6.5c1.4 0 2.7-.3 3.8-.8"/><path d="M10.5 10.5a2.5 2.5 0 0 0 3 3"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M4.8 20v-1a7.2 7.2 0 0 1 14.4 0v1"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.8" y="5" width="18.4" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 1 1 8 0v3M12 14.5v2.5"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9 2 2-2 2 2 2-3 3-2-2-3 3"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M20 12H4m6-6-6 6 6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.6 2.6L16.5 9"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.2v5.4M12 16.6v.1"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 8v-5l-4 4a8.4 8.4 0 1 0 4 7"/><path d="M15 8h5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.7 20 6v6.2a9 9 0 0 1-8 8.9 9 9 0 0 1-8-8.9V6l8-3.3Z"/><path d="m8.5 12.2 2.3 2.3 4.7-5"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2Z"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h5l2.2 2.5H19A2.5 2.5 0 0 1 21.5 9v9A2.5 2.5 0 0 1 19 20H5.5A2.5 2.5 0 0 1 3 17.5v-11Z"/><path d="M7.5 13h9"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+</svg>
+
+<div class="app-shell">
+  <aside class="visual" aria-label="Tentang FolioSpace">
+    <div class="visual-top">
+      <a class="brand" href="index.html" aria-label="FolioSpace, kembali ke halaman masuk">
+        <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-grid"></use></svg></span>
+        <span class="brand-stack"><span class="brand-title"><span data-app-label>FolioSpace</span><span class="brand-dot">.</span></span><small>PERSONAL PORTFOLIO STUDIO</small></span>
+      </a>
+    </div>
+    <div class="visual-content">
+      <span class="visual-overline">SECURE SPACE · TRUSTED IDENTITY</span>
+      <h2>Satu langkah.<br><span>Lebih percaya diri.</span></h2>
+      <p class="visual-description">Verifikasi email untuk melindungi identitas profesional dan seluruh karya yang kamu bangun. Ruang terbaik dimulai dari akun yang aman.</p>
+      <div class="visual-perks" aria-label="Keunggulan FolioSpace">
+        <span class="visual-perk"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Email terverifikasi</span>
+        <span class="visual-perk"><svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>Akun terlindungi</span>
+        <span class="visual-perk"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>Karya tetap aman</span>
+      </div>
+    </div>
+    <div class="visual-bottom">
+      <div class="visual-quote">
+        <span class="visual-quote-mark"><svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg></span>
+        <span class="visual-quote-copy"><strong>Every great portfolio starts with trust.</strong><p>Verifikasi sederhana untuk pengalaman berbagi karya yang lebih tenang.</p></span>
+      </div>
+      <span class="visual-signature">YOUR IDENTITY MATTERS.<br>YOUR WORK IS PROTECTED.</span>
+    </div>
+    <div class="visual-footer"><span>© <span data-year></span> FolioSpace Studio</span><span class="footer-tag">SECURE BY DESIGN. BUILT FOR YOUR WORK.</span></div>
+  </aside>
+
+  <main class="form-pane">
+    <div class="pane-top"><span class="secure-pill"><svg class="icon"><use href="#i-shield"></use></svg> ACCOUNT VERIFICATION</span></div>
+    <div class="form-stage">
+      <section class="form-inner" aria-labelledby="pageTitle">
+        <div id="verifySymbol" class="verify-symbol" data-kind="error" aria-hidden="true">
+          <svg class="icon"><use id="symbolUse" href="#i-mail"></use></svg>
+        </div>
+        <span class="eyebrow"><span class="sparkle" aria-hidden="true">✦</span> FOLIOSPACE / ACCOUNT SECURITY</span>
+        <h1 id="pageTitle">Verifikasi email.</h1>
+        <p class="headline-sub" id="pageDescription">Konfirmasi email agar akun portofoliomu dapat digunakan dengan aman.</p>
+        <div id="feedback" class="feedback" role="alert" hidden>
+          <span class="feedback-icon" aria-hidden="true">!</span>
+          <div class="feedback-main" id="feedbackText"></div>
+        </div>
+        <div class="verify-card" id="statusCard" role="status" aria-live="polite">
+          <h3 id="cardTitle">Menyiapkan verifikasi</h3>
+          <p id="cardDescription">Kami sedang memeriksa informasi dari tautan email Anda.</p>
+          <a href="index.html" class="submit" id="loginLink" hidden><span id="loginLinkLabel">Kembali ke halaman masuk</span><svg class="icon btn-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </div>
+        <div id="resendSection">
+          <div class="verify-extra">BUTUH TAUTAN BARU?</div>
+          <p class="verify-subtext">Tidak menemukan email atau tautan sudah kedaluwarsa? Minta verifikasi ulang melalui email yang Anda gunakan saat mendaftar.</p>
+          <form id="resendForm" class="verify-card" novalidate>
+            <div class="field">
+              <div class="label-row"><label for="resendEmail">Alamat email <span class="required" aria-hidden="true">✳</span></label></div>
+              <div class="field-shell"><span class="leading-icon"><svg class="icon"><use href="#i-mail"></use></svg></span><input id="resendEmail" type="email" inputmode="email" autocapitalize="none" autocomplete="email" maxlength="240" placeholder="nama@email.com" spellcheck="false" required aria-describedby="resendError"></div>
+              <span class="field-error" id="resendError" aria-live="polite"></span>
+            </div>
+            <button type="submit" id="resendButton" class="action-secondary"><span class="btn-spinner" id="resendSpinner" hidden></span><svg class="icon icon-sm" id="resendIcon" aria-hidden="true"><use href="#i-refresh"></use></svg><span id="resendLabel">Kirim ulang tautan verifikasi</span></button>
+          </form>
+        </div>
+        <button id="manualToggle" class="manual-toggle" type="button" aria-expanded="false" aria-controls="manualForm"><svg class="icon" aria-hidden="true"><use href="#i-key"></use></svg> Verifikasi menggunakan token manual <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></button>
+        <form id="manualForm" class="verify-card" novalidate hidden>
+          <div class="field">
+            <div class="label-row"><label for="manualToken">Token dari email <span class="required" aria-hidden="true">✳</span></label></div>
+            <div class="field-shell"><span class="leading-icon"><svg class="icon"><use href="#i-key"></use></svg></span><input id="manualToken" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="150" placeholder="Tempel token verifikasi" aria-describedby="manualError"></div>
+            <span class="field-error" id="manualError" aria-live="polite"></span>
+          </div>
+          <button class="submit" id="verifyButton" type="submit"><span class="btn-spinner" aria-hidden="true"></span><span id="verifyLabel">Verifikasi sekarang</span><svg class="icon btn-arrow" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+        </form>
+        <p class="form-note"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg><span>Jangan bagikan tautan verifikasi atau token kepada siapa pun.</span></p>
+        <div style="margin-top:21px"><a class="action-secondary" href="index.html"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow-left"></use></svg> Kembali ke halaman masuk</a></div>
+      </section>
+    </div>
+    <footer class="account-foot">© <span data-year></span> <span data-app-label>FolioSpace</span> · Your work deserves a beautiful home.</footer>
+  </main>
+</div>
+<div id="toastStack" class="toast-stack" aria-live="polite" aria-atomic="false"></div>
+<script src="config.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = selector => document.querySelector(selector);
+  const app = window.FolioSpace;
+  let checking = false;
+  let sending = false;
+  let verified = false;
+
+  function notify(kind, title, message, duration = 5500) {
+    const box = document.createElement('div');
+    box.className = 'toast'; box.dataset.kind = kind;
+    box.setAttribute('role', kind === 'error' ? 'alert' : 'status');
+    const icon = document.createElement('div'); icon.className = 'toast-icon';
+    const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('class','icon');
+    const use = document.createElementNS('http://www.w3.org/2000/svg','use');
+    use.setAttribute('href', kind === 'success' ? '#i-check' : '#i-alert');
+    svg.append(use); icon.append(svg);
+    const copy = document.createElement('div'); copy.className = 'toast-copy';
+    const bold = document.createElement('strong'); bold.textContent = title;
+    const p = document.createElement('p'); p.textContent = message;
+    copy.append(bold,p);
+    const close = document.createElement('button'); close.className = 'toast-dismiss';
+    close.setAttribute('aria-label','Tutup notifikasi'); close.type='button';
+    close.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>';
+    close.addEventListener('click',()=>box.remove());
+    box.append(icon,copy,close);
+    $('#toastStack').prepend(box);
+    if ($('#toastStack').children.length > 3) $('#toastStack').lastElementChild.remove();
+    const timer=window.setTimeout(()=>box.remove(),duration);
+    box.addEventListener('mouseenter',()=>clearTimeout(timer),{once:true});
   }
-}
-.lg\:grid-cols-3 {
-  @media (width >= 64rem) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  function feedback(message,kind='error') {
+    $('#feedback').hidden=false; $('#feedback').dataset.kind=kind;
+    $('#feedbackText').textContent=message;
   }
-}
-
-:root{color-scheme:light;--bg:#f8fffb;--surface:#fff;--surface2:#f0fbf5;--surface3:#e5f8ec;--mint:#c8f1d8;--brand:#16865d;--green:#42b883;--deep:#172b22;--muted:#718178;--line:#e2eee7;--danger:#b9354a;--warning:#b17719;--radius:18px;--shadow:0 9px 30px rgba(24,69,44,.055),0 2px 8px rgba(24,69,44,.025);--font:Inter,'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--deep);font:14px/1.55 var(--font);-webkit-font-smoothing:antialiased}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.55;cursor:not-allowed}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid rgba(66,184,131,.28);outline-offset:3px}a{color:inherit;text-decoration:none}img{max-width:100%}h1,h2,h3,h4,p{margin-top:0}h1,h2,h3{letter-spacing:-.04em;line-height:1.2}small,.muted{color:var(--muted)}.hidden,[hidden]{display:none!important}.icon{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.brand-mark{width:39px;height:39px;background:linear-gradient(135deg,#198c61,#54c98e);display:grid;place-items:center;border-radius:12px;color:#fff;box-shadow:0 10px 20px #3cae7a31}.brand-mark svg{width:22px;height:22px}.brand{display:flex;gap:11px;align-items:center;font-size:19px;font-weight:790;letter-spacing:-.06em}.eyebrow{font-size:11px;text-transform:uppercase;font-weight:760;letter-spacing:.16em;color:var(--brand)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 16px;background:#fff;border:1px solid var(--line);border-radius:12px;color:var(--deep);font-weight:680;transition:background .16s,transform .16s,box-shadow .16s,border-color .16s;white-space:nowrap;line-height:1.3}.btn:hover:not(:disabled){border-color:#bcddcb;background:#f6fcf8;transform:translateY(-1px)}.btn-primary{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 8px 16px #167f572b}.btn-primary:hover:not(:disabled){background:#11764e;border-color:#11764e;color:#fff;box-shadow:0 12px 20px #167f572b}.btn-soft{background:#e8f8ef;color:var(--brand);border-color:#d6ebdf}.btn-ghost{background:transparent;border-color:transparent}.btn-danger{color:var(--danger);background:#fff8f9;border-color:#f0d9dc}.btn-sm{padding:8px 11px;border-radius:10px;font-size:12px}.btn-icon{width:40px;height:40px;padding:0}.button-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.field{display:flex;flex-direction:column;gap:6px;margin-bottom:15px}.field>label,.input-label{font-size:12px;font-weight:740;letter-spacing:.005em}.field input,.field select,.field textarea,.search-input,.control{background:#fff;border:1px solid #dbe9e1;border-radius:11px;padding:11px 12px;min-height:43px;width:100%;outline:none;color:var(--deep);box-shadow:0 1px 2px #234d2d04;transition:border-color .15s,box-shadow .15s}.field input:focus,.field select:focus,.field textarea:focus,.search-input:focus,.control:focus{border-color:#56b989;box-shadow:0 0 0 4px #42b88317;outline:none}.field textarea{resize:vertical;min-height:88px}.field small{font-size:11px}.field-check{display:flex;gap:8px;align-items:center;margin:11px 0}.field-check input{accent-color:var(--brand);width:16px;height:16px}.surface{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.subtle{color:var(--muted)}.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:99px;background:#edf8f0;color:#357a55;font-size:11px;font-weight:710}.pill.draft{background:#f3f4f3;color:#7c8580}.pill.archived{background:#fff1e7;color:#986322}.dot{width:7px;height:7px;border-radius:50%;background:currentColor}.tag{display:inline-flex;border:1px solid #d8e9df;color:#617e6d;padding:3px 8px;border-radius:7px;font-size:11px}.chip{background:#edf8f0;color:#2b8058;border-radius:99px;padding:5px 9px;font-size:11px;font-weight:660}.toast-layer{position:fixed;right:18px;bottom:20px;z-index:150;display:grid;gap:10px;max-width:min(410px,calc(100% - 36px));pointer-events:none}.toast{pointer-events:auto;display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);box-shadow:0 18px 55px #214c302e;padding:14px 17px;border-radius:12px;animation:pop .2s ease}.toast.error{border-left:4px solid var(--danger)}.toast.success{border-left:4px solid var(--green)}.toast.warn{border-left:4px solid #d2a340}.toast button{border:0;background:none;margin-left:auto;font-size:19px;color:var(--muted)}.spinner{width:16px;height:16px;border:2px solid #cde5d7;border-top-color:var(--brand);border-radius:50%;animation:spin .7s linear infinite}.skeleton{background:linear-gradient(100deg,#eef6f0 12%,#f7fbf8 30%,#eef6f0 49%);background-size:250% 100%;animation:shimmer 1.5s linear infinite;border-radius:8px;min-height:14px}.empty{padding:42px 16px;text-align:center;display:grid;justify-items:center;gap:9px;color:var(--muted)}.empty-art{width:66px;height:66px;border-radius:18px;display:grid;place-items:center;background:#e4f7eb;color:var(--brand);margin-bottom:5px}.empty strong{font-size:17px;color:var(--deep);letter-spacing:-.03em}.empty p{max-width:350px;margin:0}.flex{display:flex}.flex-wrap{flex-wrap:wrap}.between{justify-content:space-between}.center{align-items:center}.grow{flex:1}.gap8{gap:8px}.gap12{gap:12px}.gap16{gap:16px}.mt12{margin-top:12px}.mt16{margin-top:16px}.mb0{margin-bottom:0}.text-right{text-align:right}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.divider{height:1px;background:var(--line);margin:18px 0}.line{border-top:1px solid var(--line)}.kbd{border:1px solid var(--line);border-bottom-width:2px;background:#fff;padding:3px 6px;border-radius:5px;color:var(--muted);font-size:10px}.notice{padding:12px 14px;border-radius:12px;background:#f0f9f3;border:1px solid #d8ecdf;color:#367854;font-size:12px}.notice.error{color:#a33c46;background:#fff3f4;border-color:#f4dddd}.link{color:var(--brand);font-weight:700}.link:hover{text-decoration:underline}.checkmark{color:var(--brand)}
-@keyframes pop{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes shimmer{to{background-position-x:-250%}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
-
-.auth-body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(420px,.95fr);background:#fff}.auth-panel{min-height:100vh;padding:36px clamp(28px,6vw,96px);display:flex;flex-direction:column}.auth-inner{width:min(425px,100%);margin:auto}.auth-inner h1{font-size:clamp(31px,3vw,42px);margin:10px 0;color:#152c20;font-weight:790}.auth-inner>p{font-size:14px;color:var(--muted);margin-bottom:25px}.auth-form{background:#fff}.auth-tabs{display:flex;border:1px solid var(--line);background:#f4faf6;border-radius:12px;padding:4px;margin:21px 0 22px;gap:3px}.auth-tabs button{flex:1;border:none;background:transparent;padding:10px;border-radius:9px;font-weight:680;color:#748578}.auth-tabs button.active{background:#fff;color:var(--brand);box-shadow:0 2px 9px #17402c12}.auth-submit{width:100%;margin-top:8px;padding:13px}.auth-footer{margin:28px auto 0;text-align:center;font-size:12px;color:#8ca097}.auth-decor{position:relative;overflow:hidden;padding:64px clamp(30px,5vw,86px);display:flex;flex-direction:column;justify-content:center;background:radial-gradient(ellipse at 8% 8%,#d9f8e6 0,transparent 45%),radial-gradient(ellipse at 90% 83%,#cfefdb 0,transparent 40%),linear-gradient(140deg,#f0fcf4,#e4f7ed)}.auth-decor:after{content:'';position:absolute;inset:0;background-image:radial-gradient(#509d7152 .65px,transparent .65px);background-size:24px 24px;opacity:.23;pointer-events:none}.auth-decor-inner{position:relative;z-index:1;max-width:550px;margin:0 auto}.auth-decor h2{font-size:clamp(38px,4.5vw,67px);font-weight:820;line-height:1.09;letter-spacing:-.075em;margin:15px 0 24px}.auth-decor h2 span{color:var(--brand)}.auth-decor p{font-size:16px;max-width:420px;color:#5f7668}.preview-window{margin-top:34px;background:#ffffffda;border:1px solid #ffffffee;box-shadow:0 25px 70px #2c7b4b22;border-radius:21px;padding:15px;max-width:510px;backdrop-filter:blur(8px);transform:rotate(-1.5deg)}.preview-top{display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--line);padding:3px 5px 14px}.preview-dot{width:8px;height:8px;background:#d9e6dc;border-radius:50%}.preview-content{padding:16px}.preview-card{border-radius:13px;background:linear-gradient(120deg,#eaf8ef,#f9fffa);padding:17px;border:1px solid #e3f0e9}.preview-card h3{font-size:20px;margin:9px 0}.preview-tile{height:72px;display:flex;gap:9px;margin-top:12px}.preview-tile div{flex:1;border-radius:11px;background:#e0f3e7;border:1px solid #cde8d8}.preview-tile div:nth-child(2){background:#ecf1fb}.password-wrap{position:relative}.password-wrap input{padding-right:47px}.toggle-pass{position:absolute;right:4px;top:4px;background:transparent;border:none;padding:7px;color:var(--muted);font-size:11px}.strength{height:4px;background:#edf2ee;border-radius:4px;overflow:hidden;margin-top:7px}.strength span{display:block;height:100%;width:0;background:#f0ab64;transition:.2s}.auth-mini{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:3px}.auth-mini button{background:none;border:0;color:var(--brand);font-size:12px;font-weight:700;padding:0}.auth-status{margin:10px 0 15px}.verify-illustration{width:64px;height:64px;border-radius:20px;background:#e6f8ee;color:var(--brand);display:grid;place-items:center;margin-bottom:20px}.verify-illustration svg{width:29px;height:29px}@media(max-width:900px){.auth-body{grid-template-columns:1fr}.auth-decor{display:none}.auth-panel{min-height:100dvh;padding:24px}.auth-inner{width:min(440px,100%)}.auth-panel>.brand{margin-bottom:35px}}@media(max-width:410px){.auth-inner h1{font-size:31px}}
-
-</style></head><body class="auth-body"><main class="auth-panel min-h-screen"><a href="index.html" class="brand"><span class="brand-mark">✦</span><span><span data-app-label>FolioSpace</span><span style="color:var(--green)">.</span></span></a><section class="auth-inner"><div class="verify-illustration"><svg viewBox="0 0 24 24" class="icon"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="m3 7 9 7 9-7"/></svg></div><span class="eyebrow">EMAIL VERIFICATION</span><h1>Verifikasi email Anda.</h1><p>Konfirmasi alamat email agar akun FolioSpace dapat digunakan dengan aman.</p><form id="form"><div class="field"><label for="token">Token verifikasi</label><input id="token" required placeholder="Token dari tautan email" autocomplete="off" spellcheck="false"></div><div id="status" class="notice hidden" role="status"></div><button class="btn btn-primary" style="width:100%" id="submit">Verifikasi email →</button></form><div class="divider"></div><p style="font-size:13px;color:var(--muted)">Tautan kedaluwarsa? Masukkan email untuk mengirim ulang verifikasi.</p><form id="resend"><div class="field"><label for="email">Email akun</label><input id="email" type="email" required placeholder="nama@email.com"></div><button class="btn btn-soft" style="width:100%" id="resendBtn">Kirim ulang verifikasi</button></form><p class="auth-footer"><a href="index.html" class="link">← Kembali ke halaman masuk</a></p></section></main><aside class="auth-decor" aria-hidden="true"><div class="auth-decor-inner"><span class="pill">✦ Secure by design</span><h2>Every great portfolio starts with <span>trust.</span></h2><p>Verifikasi email untuk melindungi karya dan akun profesional Anda.</p><div class="preview-window"><div class="preview-content"><div class="preview-card"><span class="eyebrow">FOLIOSPACE</span><h3>Showcase your work,<br>with confidence.</h3><p style="margin:0;font-size:12px">Simple, polished, and uniquely yours.</p></div></div></div></div></aside><script src="config.js"></script><script>
-(() => {document.querySelectorAll('[data-app-label]').forEach(x=>x.textContent=FolioSpace.CONFIG.APP_NAME);document.title='Verifikasi Email · '+FolioSpace.CONFIG.APP_NAME;const $=s=>document.querySelector(s),token=new URLSearchParams(location.hash.slice(1)).get('token');if(token)$('#token').value=token;const status=(message,error=false)=>{const s=$('#status');s.hidden=false;s.className='notice'+(error?' error':'');s.textContent=message;};
-$('#form').addEventListener('submit',async e=>{e.preventDefault();const btn=$('#submit');btn.disabled=true;btn.textContent='Memverifikasi…';try{await FolioSpace.api('auth.verify',{token:$('#token').value.trim()},{anonymous:true});history.replaceState(null,'',location.pathname);status('Email berhasil diverifikasi. Anda dapat login sekarang.');setTimeout(()=>location.replace('index.html'),1800);}catch(ex){status(ex.message,true);}finally{btn.disabled=false;btn.textContent='Verifikasi email →';}});
-$('#resend').addEventListener('submit',async e=>{e.preventDefault();const btn=$('#resendBtn');btn.disabled=true;try{await FolioSpace.api('auth.resendVerification',{email:$('#email').value.trim()},{anonymous:true});status('Jika email membutuhkan verifikasi, tautan baru akan dikirim.');}catch(ex){status(ex.message,true);}finally{btn.disabled=false;}});
+  function clearFeedback() { $('#feedback').hidden=true; $('#feedbackText').textContent=''; }
+  function view(kind,title,description,cardTitle,cardDescription) {
+    $('#verifySymbol').dataset.kind=kind;
+    $('#symbolUse').setAttribute('href',kind==='success'?'#i-check':kind==='error'?'#i-alert':'#i-mail');
+    $('#pageTitle').textContent=title;
+    $('#pageDescription').textContent=description;
+    $('#cardTitle').textContent=cardTitle;
+    $('#cardDescription').textContent=cardDescription;
+    $('#loginLink').hidden=kind==='loading';
+    $('#loginLinkLabel').textContent=kind==='success'?'Masuk ke FolioSpace':'Kembali ke halaman masuk';
+  }
+  function setManualBusy(on) {
+    $('#verifyButton').disabled=on;
+    $('#verifyButton').dataset.pending=String(on);
+    $('#verifyLabel').textContent=on?'Memverifikasi email…':'Verifikasi sekarang';
+    $('#manualToken').readOnly=on;
+  }
+  function setResendBusy(on) {
+    sending=on;
+    $('#resendButton').disabled=on;
+    $('#resendEmail').readOnly=on;
+    $('#resendLabel').textContent=on?'Mengirim permintaan…':'Kirim ulang tautan verifikasi';
+    $('#resendSpinner').hidden=!on;
+    $('#resendIcon').hidden=on;
+  }
+  async function verify(token) {
+    if(checking || verified)return;
+    if(!/^[a-f0-9]{64}$/i.test(token)) {
+      $('#manualError').textContent='Token harus berisi 64 karakter heksadesimal dari email verifikasi.';
+      view('error','Token tidak valid.','Token yang dimasukkan belum sesuai. Periksa kembali email Anda.','Verifikasi belum berhasil','Gunakan tautan terbaru dari email atau kirim ulang permintaan verifikasi.');
+      notify('error','Token belum valid','Periksa token verifikasi dan coba lagi.');
+      return;
+    }
+    checking=true; clearFeedback();
+    setManualBusy(true);
+    view('loading','Sedang memverifikasi…','Kami sedang memeriksa tautan dan mengaktifkan akun Anda.','Memvalidasi token akun','Jangan tutup halaman ini sampai proses verifikasi selesai.');
+    try {
+      await app.api('auth.verify',{token},{anonymous:true});
+      verified=true;
+      history.replaceState(null,'',location.pathname+location.search);
+      view('success','Email terverifikasi.','Akun FolioSpace telah berhasil diaktifkan. Anda sekarang dapat masuk dan mulai mengelola portofolio.','Akun berhasil diaktifkan','Terima kasih sudah mengonfirmasi alamat email. Selamat datang di FolioSpace.');
+      $('#resendSection').hidden=true;
+      $('#manualToggle').hidden=true;
+      $('#manualForm').hidden=true;
+      notify('success','Verifikasi berhasil','Email Anda telah aktif. Silakan login ke FolioSpace.');
+    } catch(error) {
+      const message=error.message||'Terjadi kesalahan saat memverifikasi. Coba ulangi dengan tautan terbaru.';
+      view('error','Verifikasi belum berhasil.','Tautan verifikasi tidak dapat digunakan saat ini. Anda dapat meminta tautan baru melalui email.','Tautan tidak dapat diverifikasi',message);
+      feedback(message,'error');
+      notify('error','Verifikasi gagal',message);
+    } finally {
+      checking=false; setManualBusy(false);
+    }
+  }
+  async function resend(event) {
+    event.preventDefault();
+    if (sending || verified) return;
+    const email=$('#resendEmail').value.trim();
+    $('#resendError').textContent='';
+    $('#resendEmail').removeAttribute('aria-invalid');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      $('#resendError').textContent='Masukkan alamat email yang valid.';
+      $('#resendEmail').setAttribute('aria-invalid','true');
+      $('#resendEmail').focus();
+      notify('error','Alamat email belum valid','Periksa email sebelum mengirim ulang.');
+      return;
+    }
+    clearFeedback();setResendBusy(true);
+    try {
+      await app.api('auth.resendVerification',{email},{anonymous:true});
+      notify('success','Permintaan diterima','Jika akun masih perlu verifikasi, tautan baru akan dikirim ke email.');
+      feedback('Jika akun masih memerlukan verifikasi, tautan terbaru akan dikirim. Periksa juga folder spam.','success');
+    } catch(error) {
+      const message=error.message||'Pengiriman ulang belum berhasil. Silakan coba lagi.';
+      notify('error','Belum berhasil mengirim ulang',message);feedback(message,'error');
+    } finally {setResendBusy(false);}
+  }
+  $('#resendForm').addEventListener('submit',resend);
+  $('#resendEmail').addEventListener('input',()=>{
+    $('#resendError').textContent=''; $('#resendEmail').removeAttribute('aria-invalid');
+  });
+  $('#manualToggle').addEventListener('click',()=>{
+    const opening=$('#manualForm').hidden;
+    $('#manualForm').hidden=!opening;
+    $('#manualToggle').setAttribute('aria-expanded',String(opening));
+    if(opening)$('#manualToken').focus();
+  });
+  $('#manualToken').addEventListener('input',()=>$('#manualError').textContent='');
+  $('#manualForm').addEventListener('submit',event=>{
+    event.preventDefault();
+    verify($('#manualToken').value.trim());
+  });
+  document.querySelectorAll('[data-year]').forEach(el=>el.textContent=new Date().getFullYear());
+  document.querySelectorAll('[data-app-label]').forEach(el=>el.textContent=app?.CONFIG.APP_NAME||'FolioSpace');
+  document.title='Verifikasi email · '+(app?.CONFIG.APP_NAME||'FolioSpace');
+  const token = new URLSearchParams(location.hash.slice(1)).get('token');
+  if(token) {
+    // The email link contains its token in the URL fragment, never in the form POST URL.
+    verify(token);
+  } else {
+    view('error','Tautan tidak ditemukan.','Buka halaman ini melalui tautan verifikasi terbaru yang dikirim ke email Anda.','Belum ada token verifikasi','Masukkan email di bawah untuk meminta tautan baru atau gunakan token manual dari email Anda.');
+  }
 })();
-</script></body></html>
+
+</script>
+</body>
+</html>
